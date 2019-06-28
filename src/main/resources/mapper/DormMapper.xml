@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.likejian.test.dao.DormMapper">
+  <resultMap id="BaseResultMap" type="com.likejian.test.entity.Dorm">
+    <id column="dorm_id" jdbcType="INTEGER" property="dormId" />
+    <result column="dorm_code" jdbcType="VARCHAR" property="dormCode" />
+    <result column="dorm_sex" jdbcType="INTEGER" property="dormSex" />
+    <result column="dorm_type" jdbcType="INTEGER" property="dormType" />
+    <result column="dorm_lived_num" jdbcType="INTEGER" property="dormLivedNum" />
+    <result column="dorm_staff_change_flag" jdbcType="BIT" property="dormStaffChangeFlag" />
+    <result column="dorm_leader_id" jdbcType="INTEGER" property="dormLeaderId" />
+    <result column="dorm_leader_name" jdbcType="VARCHAR" property="dormLeaderName" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    dorm_id, dorm_code, dorm_sex, dorm_type, dorm_lived_num, dorm_staff_change_flag, 
+    dorm_leader_id, dorm_leader_name, createtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dorm
+    where dorm_id = #{dormId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dorm
+    where dorm_id = #{dormId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.likejian.test.entity.Dorm">
+    insert into dorm (dorm_id, dorm_code, dorm_sex, 
+      dorm_type, dorm_lived_num, dorm_staff_change_flag, 
+      dorm_leader_id, dorm_leader_name, createtime
+      )
+    values (#{dormId,jdbcType=INTEGER}, #{dormCode,jdbcType=VARCHAR}, #{dormSex,jdbcType=INTEGER}, 
+      #{dormType,jdbcType=INTEGER}, #{dormLivedNum,jdbcType=INTEGER}, #{dormStaffChangeFlag,jdbcType=BIT}, 
+      #{dormLeaderId,jdbcType=INTEGER}, #{dormLeaderName,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.likejian.test.entity.Dorm">
+    insert into dorm
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dormId != null">
+        dorm_id,
+      </if>
+      <if test="dormCode != null">
+        dorm_code,
+      </if>
+      <if test="dormSex != null">
+        dorm_sex,
+      </if>
+      <if test="dormType != null">
+        dorm_type,
+      </if>
+      <if test="dormLivedNum != null">
+        dorm_lived_num,
+      </if>
+      <if test="dormStaffChangeFlag != null">
+        dorm_staff_change_flag,
+      </if>
+      <if test="dormLeaderId != null">
+        dorm_leader_id,
+      </if>
+      <if test="dormLeaderName != null">
+        dorm_leader_name,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dormId != null">
+        #{dormId,jdbcType=INTEGER},
+      </if>
+      <if test="dormCode != null">
+        #{dormCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dormSex != null">
+        #{dormSex,jdbcType=INTEGER},
+      </if>
+      <if test="dormType != null">
+        #{dormType,jdbcType=INTEGER},
+      </if>
+      <if test="dormLivedNum != null">
+        #{dormLivedNum,jdbcType=INTEGER},
+      </if>
+      <if test="dormStaffChangeFlag != null">
+        #{dormStaffChangeFlag,jdbcType=BIT},
+      </if>
+      <if test="dormLeaderId != null">
+        #{dormLeaderId,jdbcType=INTEGER},
+      </if>
+      <if test="dormLeaderName != null">
+        #{dormLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.likejian.test.entity.Dorm">
+    update dorm
+    <set>
+      <if test="dormCode != null">
+        dorm_code = #{dormCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dormSex != null">
+        dorm_sex = #{dormSex,jdbcType=INTEGER},
+      </if>
+      <if test="dormType != null">
+        dorm_type = #{dormType,jdbcType=INTEGER},
+      </if>
+      <if test="dormLivedNum != null">
+        dorm_lived_num = #{dormLivedNum,jdbcType=INTEGER},
+      </if>
+      <if test="dormStaffChangeFlag != null">
+        dorm_staff_change_flag = #{dormStaffChangeFlag,jdbcType=BIT},
+      </if>
+      <if test="dormLeaderId != null">
+        dorm_leader_id = #{dormLeaderId,jdbcType=INTEGER},
+      </if>
+      <if test="dormLeaderName != null">
+        dorm_leader_name = #{dormLeaderName,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where dorm_id = #{dormId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.likejian.test.entity.Dorm">
+    update dorm
+    set dorm_code = #{dormCode,jdbcType=VARCHAR},
+      dorm_sex = #{dormSex,jdbcType=INTEGER},
+      dorm_type = #{dormType,jdbcType=INTEGER},
+      dorm_lived_num = #{dormLivedNum,jdbcType=INTEGER},
+      dorm_staff_change_flag = #{dormStaffChangeFlag,jdbcType=BIT},
+      dorm_leader_id = #{dormLeaderId,jdbcType=INTEGER},
+      dorm_leader_name = #{dormLeaderName,jdbcType=VARCHAR},
+      createtime = #{createtime,jdbcType=TIMESTAMP}
+    where dorm_id = #{dormId,jdbcType=INTEGER}
+  </update>
+
+</mapper>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+   <!-- <link rel="shortcut icon" th:href="@{/favicon.ico}"/>-->
+    <link rel="shortcut icon" th:href="@{/favicon.ico}"/>
+    <link rel="bookmark" th:href="@{/favicon.ico}"/>
+    <title>Title</title>
+
+</head>
+<body>
+
+
+hello thymeleaf
+<span th:text="${name}">    </span>
+<p th:text="${#strings.abbreviate('lkjkkkkkkkkkkkkk',5)}">内容内容内容</p>
+    <!--<div th:each="kk,lstat:${list}">-->
+        <!--<div class="col-md-2"  th:title="${kk}"  title="一个人，信你所信，为你所现" >-->
+            <!--<span th:text="${kk}"></span>-->
+        <!--</div>-->
+    <!--</div>-->
+
+
+</body>
+</html>
